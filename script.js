@@ -48,7 +48,7 @@ random = (min, max) => {
 
 create = (count, color, color2, size, x, y, vx, vy) => {
     for (i=0; i<count; i++) {
-        particles.push(particle(x || random(size, MSIZE-size), y || random(size, MSIZE-size), color, color2, size || random(6,10), vx || 0, vy || 0))
+        particles.push(particle(x, y, color, color2, size, vx, vy))
     }
 }
 
@@ -127,7 +127,8 @@ let MotionY = document.getElementById("my");
 let fc = "#aa3333";
 let oc = "#ff0000";
 let sz = 60;
-let mx, my = 0;
+let mx = 0;
+let my = 0;
 
 FillColor.addEventListener("input", (e) => {
     fc = e.target.value;
@@ -140,6 +141,14 @@ OutlineColor.addEventListener("input", (e) => {
 Size.addEventListener("input", (e) => {
     sz = e.target.value;
 });
+
+// MotionX.addEventListener("input", (e) => {
+//     mx = e.target.value;
+// });
+
+// MotionY.addEventListener("input", (e) => {
+//     my = e.target.value;
+// });
 
 truecanvas.onmousedown = (e) => {
     let rect = truecanvas.getBoundingClientRect();
