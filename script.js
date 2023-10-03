@@ -72,21 +72,18 @@ updatePhysics = () => {
 
             d = Math.sqrt(dx * dx + dy * dy) // odleglosc partikli
 
-            f = G * (p.m * p2.m) / (d) // sila
-
+            f = G * (p.m * p2.m) / (d) // sila przyciagania sie
             
             // wektory sily
             fx += dx/d * f
             fy += dy/d * f
 
-                // kolizje
+            // let momentum = Math.sqrt(Math.pow(fx,2) + Math.pow(fy,2));
+            
+            //     // kolizje
             // if (d <= p.size + p2.size)
             // {
-            //     // predkosc = wektor sily * sila * stosunek mas
-            //     p.vx += -fx * (p2.m / p.m)
-            //     p.vy += -fy * (p2.m / p.m)
-            //     p2.vx += fx * (p.m / p2.m)
-            //     p2.vy += fy * (p.m / p2.m)
+                                //              J U T R O   D O K O N C Z E                //  
             // }
         }
         
