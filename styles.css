@@ -39,7 +39,7 @@ canvas {
     width: 90%;
     justify-content: space-between;
 }
-#sz {
+#sz, #mx, #my {
     width: 3em;
     aspect-ratio: 1.67;
     background: none;

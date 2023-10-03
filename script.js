@@ -1,6 +1,8 @@
 let canvas = document.getElementById("gsim").getContext('2d')
 let truecanvas = document.getElementById("gsim")
 
+
+
 const MSIZE = 4000
 const G = 0.01
 
@@ -89,7 +91,7 @@ updatePhysics = () => {
         }
         
         // rysowanie wektora sily
-        drawVec(p.x, p.y, fx, fy)  
+        // drawVec(p.x, p.y, fx, fy)  
 
         //przyspieszenie
         p.ax = fx / p.m
@@ -104,8 +106,8 @@ updatePhysics = () => {
         p.y += p.vy
     
         //odbicie od mapy
-        if (p.x < 0 || p.x > MSIZE) {p.vx *= -0.99}
-        if (p.y < 0 || p.y > MSIZE) {p.vy *= -0.99}
+        if (p.x < 0 || p.x > MSIZE) {p.vx *= -0.5}
+        if (p.y < 0 || p.y > MSIZE) {p.vy *= -0.5}
 
 
         
@@ -113,9 +115,32 @@ updatePhysics = () => {
     }
 
 }
- 
 
 //  - - -    partikle    - - -
+
+
+let FillColor = document.getElementById("fc");
+let OutlineColor = document.getElementById("oc");
+let Size = document.getElementById("sz");
+let MotionX = document.getElementById("mx");
+let MotionY = document.getElementById("my");
+let fc = "#aa3333";
+let oc = "#ff0000";
+let sz = 60;
+let mx, my = 0;
+
+FillColor.addEventListener("input", (e) => {
+    fc = e.target.value;
+});
+
+OutlineColor.addEventListener("input", (e) => {
+    oc = e.target.value;
+});
+
+Size.addEventListener("input", (e) => {
+    sz = e.target.value;
+});
+
 truecanvas.onmousedown = (e) => {
     let rect = truecanvas.getBoundingClientRect();
     let scaleX = truecanvas.width / rect.width;
@@ -123,13 +148,20 @@ truecanvas.onmousedown = (e) => {
     let mouseX = (e.clientX - rect.left) * scaleX;
     let mouseY = (e.clientY - rect.top) * scaleY;
 
-    create(1, "#aa3333", "#ff0000", 60, mouseX, mouseY)
+    create(1, fc, oc, sz, mouseX, mouseY, mx, my)
 }
 // create(1, "#4ab8ff", "#3380b2", 60, 2000, 3000, 15, 0)
 // create(1, "#ffb226", "#f48225", 60, 2000, 2000, 0, 0)
 // create(1, "#1ff226", "#f48225", 60, 3000, 2000, -15, 0)
 // - - - koniec partikli - - -
-
+window.addEventListener("keydown", (event) => {
+    if(event.key.toLowerCase() === 'r') {
+        particles = [];
+    }
+    if(event.key.toLowerCase() === 'q') {
+        window.close();
+    }
+})
 
 update=()=>{
     // resetowanie canvas
