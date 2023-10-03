@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gravity Simulation</title>
+</head>    
+<body>
+    <div id="outerbox">
+        <div class="box">
+            <div class="miniinlinecontainer">
+                <div class="tekst">Fill color: </div>
+                <input type="color" name="Fill Color" id="fc">
+            </div><br>
+            <div class="miniinlinecontainer">
+                <div class="tekst">Outline color: </div>
+                <input type="color" name="Outline Color" id="oc">
+            </div><br>
+            <div class="miniinlinecontainer">
+                <div class="tekst">Size: </div>
+                <input type="number" name="Size" id="sz">
+            </div>
+        </div>
+        <div class="box">
+            <span>Omega Gravity simulation 👍</span>
+            <canvas id="gsim" width="4000" height="4000"></canvas>
+        </div>
+    </div>
+</body> 
+</html>
+<link rel="stylesheet" href="styles.css">
+<script src="script.js" defer></script>
