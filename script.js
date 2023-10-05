@@ -79,10 +79,10 @@ updatePhysics = () => {
             dx = (p.x - p2.x)
             dy = (p.y - p2.y)
             d = Math.sqrt(dx * dx + dy * dy)
-            bordersum = p.size + p2.size;
+            let bordersum = p.size + p2.size;
+            console.log(d, bordersum);
             ux = dx / d;
             uy = dy / d;
-            console.log(bordersum, d);
             if(d < bordersum) {
                 p.x = p2.x + (bordersum + 1) * ux;
                 p.y = p2.y + (bordersum + 1) * uy;
@@ -119,7 +119,7 @@ OutlineColor.addEventListener("input", (e) => {
     oc = e.target.value;
 });
 Size.addEventListener("input", (e) => {
-    sz = e.target.value;
+    sz = parseInt(e.target.value);
 });
 // MotionX.addEventListener("input", (e) => {
 //     mx = e.target.value;
