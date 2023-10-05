@@ -1,7 +1,7 @@
 let canvas = document.getElementById("gsim").getContext('2d')
 let truecanvas = document.getElementById("gsim")
 const MSIZE = 4000
-const G = 0.01
+const G = 0.006
 //kwadrat :)
 drawRect = (x,y,c,c2,s) => {
     canvas.fillStyle = c
@@ -72,21 +72,31 @@ updatePhysics = () => {
         p.x += p.vx
         p.y += p.vy
         //kolizje?
-        // for (let j=0; j<particles.length; j++) {
-        //     let p2 = particles[j]
-        //     if (i===j) {continue}
-        //     //roznica x1, x2; y1, y2
-        //     dx = (p2.x - p.x)
-        //     dy = (p2.y - p.y)
-        //     d = Math.sqrt(dx * dx + dy * dy)
-        //     bordersum = p.size - p2.size
-        //     ux = dx / d;
-        //     uy = dy / d;
-
-        // }
+        for (let j=0; j<particles.length; j++) {
+            let p2 = particles[j]
+            if (i===j) {continue}
+            //roznica x1, x2; y1, y2
+            dx = (p.x - p2.x)
+            dy = (p.y - p2.y)
+            d = Math.sqrt(dx * dx + dy * dy)
+            bordersum = p.size + p2.size;
+            ux = dx / d;
+            uy = dy / d;
+            console.log(bordersum, d);
+            if(d < bordersum) {
+                p.x = p2.x + (bordersum + 1) * ux;
+                p.y = p2.y + (bordersum + 1) * uy;
+                console.log("tu powinno sie odbic");
+            }
+        }
         //odbicie od mapy
-        if (p.x < 0 || p.x > MSIZE) {p.vx *= -0.7}
-        if (p.y < 0 || p.y > MSIZE) {p.vy *= -0.7}
+        if (p.x - p.size < 0 || p.x + p.size > MSIZE) {p.vx *= -0.9}
+        if (p.y - p.size < 0 || p.y + p.size > MSIZE) {p.vy *= -0.9}
+        //anti stuck
+        if (p.x <= 0) {p.x += p.size}
+        if (p.x >= MSIZE) {p.x -= p.size}
+        if (p.y <= 0) {p.y += p.size}
+        if (p.y >= MSIZE) {p.y -= p.size}
     }
 
 }
