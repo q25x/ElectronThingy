@@ -71,9 +71,22 @@ updatePhysics = () => {
         //pozycja
         p.x += p.vx
         p.y += p.vy
+        //kolizje?
+        // for (let j=0; j<particles.length; j++) {
+        //     let p2 = particles[j]
+        //     if (i===j) {continue}
+        //     //roznica x1, x2; y1, y2
+        //     dx = (p2.x - p.x)
+        //     dy = (p2.y - p.y)
+        //     d = Math.sqrt(dx * dx + dy * dy)
+        //     bordersum = p.size - p2.size
+        //     ux = dx / d;
+        //     uy = dy / d;
+
+        // }
         //odbicie od mapy
-        if (p.x < 0 || p.x > MSIZE) {p.vx *= -0.5}
-        if (p.y < 0 || p.y > MSIZE) {p.vy *= -0.5}
+        if (p.x < 0 || p.x > MSIZE) {p.vx *= -0.7}
+        if (p.y < 0 || p.y > MSIZE) {p.vy *= -0.7}
     }
 
 }
