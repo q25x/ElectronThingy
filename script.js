@@ -59,12 +59,6 @@ updatePhysics = () => {
             // wektory sily
             fx += dx/d * f
             fy += dy/d * f
-            // let momentum = Math.sqrt(Math.pow(fx,2) + Math.pow(fy,2));
-            //     // kolizje
-            // if (d <= p.size + p2.size)
-            // {
-                                //              J U T R O   D O K O N C Z E                //  
-            // }
         }
         // rysowanie wektora sily
         // drawVec(p.x, p.y, fx, fy)  
